@@ -1,0 +1,50 @@
+<resources>
+    <string name="app_name">CNode社区</string>
+    <string name="topic_detail">文章详情</string>
+    <string name="new_topic">发布话题</string>
+    <string name="input_title">请输入标题（10个字以上）</string>
+    <string name="input_content">请输入内容</string>
+    <string name="reply_list">回复列表</string>
+
+    <string name="version">版本&#160;</string>
+    <string name="share_content">https://cnodejs.org/</string>
+    <string name="user_info">个人中心</string>
+    <string name="login">点击登录</string>
+    <string name="logout">退出登录</string>
+    <string name="on_login">正在登录&#8230;</string>
+    <string name="success">操作成功</string>
+    <string name="failure">操作失败，请重试</string>
+    <string name="confirm">确定</string>
+    <string name="cancel">取消</string>
+    <string name="hint_input">请输入内容</string>
+    <string name="setting">设置</string>
+    <string name="invite">推荐给朋友</string>
+    <string name="about">关于</string>
+    <string name="about_content">CNode 社区为国内最专业的 Node.js 开源技术社区，致力于 Node.js 的技术研究。
+
+CNode 社区由一批热爱 Node.js 技术的工程师发起，目前已经吸引了互联网各个公司的专业技术人员加入，我们非常欢迎更多对 Node.js 感兴趣的朋友。
+
+CNode 的 SLA 保证是，一个9，即 90.000000%。
+
+社区目前由 @alsotang 在维护，有问题请联系：https://github.com/alsotang
+
+请关注我们的官方微博：http://weibo.com/cnodejs</string>
+
+    <string name="all">全部</string>
+    <string name="good">精华</string>
+    <string name="share">分享</string>
+    <string name="ask">问答</string>
+    <string name="job">招聘</string>
+
+    <string name="add">添加</string>
+    <string name="data_empty">没有数据</string>
+
+    <string name="generic_server_down">网络超时</string>
+    <string name="no_internet">网络链接已断开</string>
+    <string name="generic_error">访问异常</string>
+
+    <string name="on_loading">正在载入&#8230;</string>
+    <string name="on_committing">正在提交&#8230;</string>
+    <string name="load_more">点击加载更多</string>
+    <string name="load_failure">加载失败，点击重试</string>
+</resources>

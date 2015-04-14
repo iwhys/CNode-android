@@ -1,0 +1,9 @@
+<resources>
+    <string name="generic_server_down">网络超时</string>
+    <string name="no_internet">网络链接已断开</string>
+    <string name="generic_error">访问异常</string>
+
+    <string name="on_loading">正在载入</string>
+    <string name="load_more">点击加载更多</string>
+    <string name="load_failure">加载失败，点击重试</string>
+</resources>

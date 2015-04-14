@@ -1,0 +1,74 @@
+<resources>
+
+    <style name="MyAppBaseTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColorPrimary">@android:color/white</item>
+        <!-- Toolbar风格 -->
+        <item name="toolbarStyle">@style/DefaultToolbar</item>
+        <!--抽屉图标效果-->
+        <item name="drawerArrowStyle">@style/AppTheme.MyDrawerArrowStyle</item>
+        <item name="windowActionModeOverlay">true</item>
+    </style>
+
+    <style name="MyAppTheme" parent="@style/MyAppBaseTheme">
+        <!-- 设置activity切换动画 -->
+        <item name="android:windowAnimationStyle">@android:style/Animation.Translucent</item>
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+
+
+    <!-- 默认的Toolbar样式 -->
+    <style name="DefaultToolbar" parent="Widget.AppCompat.Toolbar">
+        <item name="android:background">@color/action_bar_bg</item>
+        <!-- Actionbar color -->
+        <item name="colorPrimary">@color/action_bar_bg</item>
+        <!--Status bar color-->
+        <item name="colorPrimaryDark">@color/action_bar_bg</item>
+        <item name="colorControlNormal">@color/main_color</item>
+    </style>
+
+    <style name="AppTheme.MyDrawerArrowStyle" parent="Widget.AppCompat.DrawerArrowToggle">
+        <!--将 spinBars 属性设定为 false-->
+        <item name="spinBars">true</item>
+        <!--设定 drawer arrow 的颜色-->
+        <item name="color">@color/main_color</item>
+    </style>
+
+    <!--ActionButton-->
+    <style name="ActionButton" parent="android:Widget.ActionButton">
+        <item name="android:padding">0dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:minWidth">?attr/actionBarSize</item>
+        <item name="android:layout_width">?attr/actionBarSize</item>
+        <item name="android:layout_height">?attr/actionBarSize</item>
+        <item name="android:minHeight">?attr/actionBarSize</item>
+    </style>
+
+    <!-- 带自定义对勾的RadioButton -->
+    <style name="MyRadioButton">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:layout_marginRight">10dp</item>
+        <item name="android:button">@drawable/radio_button_switcher</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/radio_text_color_switcher</item>
+    </style>
+
+    <!-- Dialog主题 -->
+    <style name="MyDialog" parent="@android:style/Theme.Dialog">
+        <!-- 边框 -->
+        <item name="android:windowFrame">@null</item>
+        <!-- 是否浮现在activity之上 -->
+        <item name="android:windowIsFloating">true</item>
+        <!-- 半透明 -->
+        <item name="android:windowIsTranslucent">true</item>
+        <!-- 无标题 -->
+        <item name="android:windowNoTitle">true</item>
+        <!-- 背景透明 -->
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <!-- 模糊 -->
+        <item name="android:backgroundDimEnabled">true</item>
+    </style>
+
+</resources>

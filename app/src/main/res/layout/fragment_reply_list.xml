@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/common_toolbar" />
+
+    <FrameLayout
+        android:id="@+id/list_container"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="45dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <LinearLayout
+        android:id="@+id/reply_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="45dp"
+        android:layout_gravity="bottom"
+        android:orientation="horizontal"
+        android:background="@drawable/rect_border"
+        >
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:paddingLeft="5dp"
+            android:background="#fefefe"
+            android:layout_marginTop="1dp"
+            android:paddingRight="5dp"
+            android:minHeight="45dp"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:minHeight="45dp"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/reply_to"
+                    android:layout_width="wrap_content"
+                    android:textColor="@color/main_color"
+                    android:gravity="center_vertical"
+                    android:textSize="16sp"
+                    android:layout_height="match_parent" />
+
+                <EditText
+                    android:id="@+id/input"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:padding="5dp"
+                    android:layout_gravity="center_vertical"
+                    android:textColor="#333"
+                    android:textSize="16sp"
+                    android:hint="@string/hint_input"
+                    android:textColorHint="@color/hint_input" />
+            </LinearLayout>
+
+            <include
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:layout_gravity="bottom"
+                android:layout_margin="4dp"
+                layout="@layout/input_line" />
+
+            <View
+                android:id="@+id/login_mask"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:visibility="gone" />
+
+        </FrameLayout>
+        <View
+            android:layout_width="0.5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_height="match_parent"
+            android:background="#dedede"
+            />
+
+        <TextView
+            android:id="@+id/confirm"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:minHeight="45dp"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:enabled="false"
+            android:layout_marginTop="1dp"
+            android:background="@drawable/btn_common_bg"
+            android:textColor="@color/btn_common_color"
+            android:text="@string/confirm"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp" />
+    </LinearLayout>
+
+</FrameLayout>

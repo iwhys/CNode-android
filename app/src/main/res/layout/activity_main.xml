@@ -1,0 +1,45 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/common_toolbar" />
+
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/drawer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <com.astuetz.PagerSlidingTabStrip
+                android:id="@+id/tabs"
+                android:layout_width="match_parent"
+                android:background="@color/action_bar_bg"
+                app:pstsIndicatorHeight="4dp"
+                app:pstsIndicatorColor="@color/main_color"
+                app:pstsDividerColor="@android:color/transparent"
+                app:pstsUnderlineHeight="0.5dp"
+                app:pstsUnderlineColor="#222"
+                app:pstsShouldExpand="true"
+                android:layout_height="40dp" />
+            <android.support.v4.view.ViewPager
+                android:id="@+id/view_pager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="40dp"
+                android:background="@android:color/white"
+                />
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/left_menu"
+            android:layout_width="220dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:orientation="vertical" />
+
+    </android.support.v4.widget.DrawerLayout>
+</LinearLayout>

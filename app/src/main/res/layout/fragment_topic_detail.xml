@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/resize_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/common_toolbar" />
+
+    <com.iwhys.cnode.widget.ScrollListenerWebView
+        android:id="@+id/web_view"
+        android:layout_width="match_parent"
+        android:layout_marginTop="50dp"
+        android:layout_height="match_parent" />
+    <TextView
+        android:id="@+id/reply"
+        android:layout_width="wrap_content"
+        android:drawableLeft="@drawable/icon_reply"
+        android:drawableStart="@drawable/icon_reply"
+        android:layout_marginRight="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="10dp"
+        android:textSize="14sp"
+        android:layout_gravity="bottom|end"
+        android:drawablePadding="2dp"
+        android:textColor="@color/main_color"
+        android:layout_height="50dp" />
+</FrameLayout>

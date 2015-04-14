@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/CNode.iml" filepath="$PROJECT_DIR$/CNode.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/library-mylistview/library-mylistview.iml" filepath="$PROJECT_DIR$/library-mylistview/library-mylistview.iml" />
+      <module fileurl="file://$PROJECT_DIR$/library-qrcode/library-qrcode.iml" filepath="$PROJECT_DIR$/library-qrcode/library-qrcode.iml" />
+      <module fileurl="file://$PROJECT_DIR$/library-swipeback/library-swipeback.iml" filepath="$PROJECT_DIR$/library-swipeback/library-swipeback.iml" />
+    </modules>
+  </component>
+</project>
+

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/refresh_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.iwhys.mylistview.LoadMoreListView
+            android:id="@+id/list_view"
+            android:layout_width="match_parent"
+            android:background="@android:color/white"
+            android:divider="@null"
+            android:cacheColorHint="@android:color/transparent"
+            android:listSelector="@android:color/transparent"
+            android:scrollbars="vertical"
+            android:scrollbarStyle="insideOverlay"
+            android:overScrollMode="never"
+            android:layout_height="match_parent" />
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+    <FrameLayout
+        android:id="@+id/empty_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#888"
+            android:textSize="16sp"
+            android:text="@string/load_failure"
+            android:drawableTop="@drawable/icon_bad"
+            android:layout_gravity="center"
+             />
+    </FrameLayout>
+</FrameLayout>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="LoadMoreListView">
+        <attr name="effect" format="enum">
+            <enum name="standard" value="0" />
+            <enum name="grow" value="1" />
+            <enum name="cards" value="2" />
+            <enum name="curl" value="3" />
+            <enum name="wave" value="4" />
+            <enum name="flip" value="5" />
+            <enum name="fly" value="6" />
+            <enum name="reverse_fly" value="7" />
+            <enum name="helix" value="8" />
+            <enum name="fan" value="9" />
+            <enum name="tilt" value="10" />
+            <enum name="zipper" value="11" />
+            <enum name="fade" value="12" />
+            <enum name="twirl" value="13" />
+            <enum name="slide_in" value="14" />
+        </attr>
+
+        <attr name="only_animate_new_items" format="boolean" />
+        <attr name="only_animate_fling" format="boolean" />
+        <attr name="simulate_grid_with_list" format="boolean" />
+        <attr name="max_velocity" format="integer" />
+    </declare-styleable>
+
+    <!--左侧菜单图标-->
+    <array name="left_menu_icon">
+        <item>@drawable/icon_setting</item>
+        <item>@drawable/icon_share</item>
+        <item>@drawable/icon_about</item>
+    </array>
+
+    <!--左侧菜单-->
+    <string-array name="left_menu_title">
+        <item>@string/setting</item>
+        <item>@string/invite</item>
+        <item>@string/about</item>
+    </string-array>
+
+    <!--栏目标题-->
+    <string-array name="column_title">
+        <item>@string/all</item>
+        <item>@string/good</item>
+        <item>@string/share</item>
+        <item>@string/ask</item>
+        <item>@string/job</item>
+    </string-array>
+
+    <!--栏目标签-->
+    <string-array name="column_tab">
+        <item>all</item>
+        <item>good</item>
+        <item>share</item>
+        <item>ask</item>
+        <item>job</item>
+    </string-array>
+
+</resources>

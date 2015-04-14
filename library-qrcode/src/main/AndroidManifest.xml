@@ -1,0 +1,10 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.zbar.lib">
+    <!-- 允许设置振动 -->
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <!-- 允许调用相机-->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <!-- 允许调用闪光灯-->
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+    <application />
+
+</manifest>

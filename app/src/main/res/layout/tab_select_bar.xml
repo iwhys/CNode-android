@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/tab_select_bar"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/rect_border"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <RadioGroup
+        android:id="@+id/tab_select"
+        android:layout_width="wrap_content"
+        android:orientation="horizontal"
+        android:checkedButton="@+id/ask"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:layout_height="match_parent"
+        >
+
+        <RadioButton
+            android:id="@+id/ask"
+            style="@style/MyRadioButton"
+            android:tag="ask"
+            android:text="@string/ask"
+            />
+
+        <RadioButton
+            android:id="@+id/share"
+            android:tag="share"
+            style="@style/MyRadioButton"
+            android:text="@string/share"
+            />
+
+        <RadioButton
+            android:id="@+id/job"
+            android:tag="job"
+            style="@style/MyRadioButton"
+            android:text="@string/job"
+            />
+    </RadioGroup>
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="#cdcdcd"/>
+    <TextView
+        android:id="@+id/confirm"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="0.5dp"
+        android:layout_height="match_parent"
+        android:background="@drawable/btn_common_bg"
+        android:gravity="center"
+        android:enabled="false"
+        android:textSize="16sp"
+        android:textColor="@color/btn_common_color"
+        android:text="@string/confirm"
+        />
+</LinearLayout>

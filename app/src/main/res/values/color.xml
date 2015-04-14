@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="action_bar_bg">#222</color>
+    <color name="action_bar_text">@android:color/white</color>
+    <color name="main_color">#82bb22</color>
+    <color name="common_bg">#fff</color>
+    <color name="light_color">#ffc8eac9</color>
+    <color name="heavy_color">#6d9d1d</color>
+    <color name="left_menu">#4b4b4b</color>
+    <color name="item_left_menu">#444</color>
+    <color name="tab_normal">#aaa</color>
+    <color name="tab_selected">#fff</color>
+    <color name="web_view_bg">#eee</color>
+    <color name="hint_input">#bbb</color>
+
+    <color name="list_item_odd_bg">#fafbff</color>
+    <color name="list_item_even_bg">#e5e8ef</color>
+</resources>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:background="@color/left_menu"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/user_info"
+        android:layout_width="match_parent"
+        android:background="@drawable/item_left_menu_bg"
+        android:layout_height="80dp">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/avatar"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
+            fresco:fadeDuration="300"
+            fresco:actualImageScaleType="focusCrop"
+            fresco:placeholderImage="@drawable/icon_person_default"
+            fresco:placeholderImageScaleType="fitCenter"
+            fresco:failureImageScaleType="centerInside"
+            fresco:retryImageScaleType="centerCrop"
+            fresco:progressBarImageScaleType="centerInside"
+            fresco:progressBarAutoRotateInterval="1000"
+            fresco:roundAsCircle="true"
+            fresco:roundingBorderWidth="2dp" />
+
+        <TextView
+            android:id="@+id/loginname"
+            android:text="@string/login"
+            android:textColor="@color/main_color"
+            android:textSize="16sp"
+            android:layout_toRightOf="@+id/avatar"
+            android:layout_toEndOf="@+id/avatar"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/left_menu_divider" />
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/list_view"
+        android:layout_width="match_parent"
+        android:divider="@drawable/left_menu_divider"
+        android:layout_below="@+id/user_info"
+        android:layout_above="@+id/version"
+        android:cacheColorHint="@android:color/transparent"
+        android:layout_height="match_parent" />
+
+    <TextView
+        android:id="@+id/version"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:padding="10dp"
+        android:textColor="#999"
+        android:textSize="14sp"
+        android:gravity="end"
+        android:layout_height="wrap_content" />
+</RelativeLayout>
