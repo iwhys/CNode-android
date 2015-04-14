@@ -1,6 +1,12 @@
 # CNode-android
 这是为CNodejs社区(https://cnodejs.org/) 开发的原生Android版客户端。适用于Android4.0及以上。
 
+## 应用截图
+![image](https://github.com/iwhys/CNode-android/raw/master/screenshot/01.png)
+![image](https://github.com/iwhys/CNode-android/raw/master/screenshot/02.png)
+![image](https://github.com/iwhys/CNode-android/raw/master/screenshot/03.png)
+![image](https://github.com/iwhys/CNode-android/raw/master/screenshot/04.png)
+
 ## 主要功能
 1）各栏目列表页展示，下拉刷新，上拉加载更多<br>
 2）内容页展示<br>
