@@ -19,7 +19,7 @@
 3）CompileSdkVersion 22<br>
 4）BuildToolsVersion "22.0.1"<br>
 
-## 用到的开源库
+## 感谢以下开源库作者
 1）大名鼎鼎的Facebook图片加载库<br>
 https://github.com/facebook/fresco<br>
 2）Activity滑动返回<br>
@@ -31,3 +31,6 @@ https://github.com/astuetz/PagerSlidingTabStrip<br>
 5）国人整合的ZXing和ZBar的结合体<br>
 https://github.com/SkillCollege/QrCodeScan<br>
 6）Google家的Volley和Gson<br>
+
+## License
+MIT
