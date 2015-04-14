@@ -1,5 +1,5 @@
 # CNode-android
-这是为CNodejs社区(https://cnodejs.org/) 开发的原生Android版客户端。
+这是为CNodejs社区(https://cnodejs.org/) 开发的原生Android版客户端。适用于Android4.0及以上。
 
 ## 主要功能
 1）各栏目列表页展示，下拉刷新，上拉加载更多<br>
