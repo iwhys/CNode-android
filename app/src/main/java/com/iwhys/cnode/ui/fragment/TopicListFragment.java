@@ -43,6 +43,7 @@ import java.util.Map;
  */
 public class TopicListFragment extends BaseFragment {
 
+    private final static int PAGE_COUNT = 15;
     private String tab;
     private CommonListView<Topic> listView;
 
@@ -76,7 +77,7 @@ public class TopicListFragment extends BaseFragment {
             public void getDataList(final int page) {
                 Map<String, Object> params = new HashMap<>();
                 params.put(Params.TAB, tab);
-                params.put(Params.LIMIT, 10);
+                params.put(Params.LIMIT, PAGE_COUNT);
                 params.put(Params.PAGE, page);
                 String url = UrlHelper.getTopicsUrl(params);
                 StringRequest request = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
