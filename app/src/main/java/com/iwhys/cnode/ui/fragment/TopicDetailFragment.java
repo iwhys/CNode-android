@@ -75,8 +75,8 @@ public class TopicDetailFragment extends BaseFragment {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId()==R.id.share){
-            ShareUtils.commonShare(sActivity, UrlHelper.resolve(UrlHelper.TOPIC, id));
+        if (item.getItemId() == R.id.share) {
+            ShareUtils.commonShare(sActivity, title + "\n" + UrlHelper.HOST + "/topic/" + id);
         }
         return super.onOptionsItemSelected(item);
     }
@@ -93,24 +93,14 @@ public class TopicDetailFragment extends BaseFragment {
     // webView设置
     @SuppressLint("SetJavaScriptEnabled")
     private void setWebView() {
-        webView.setScrollBarStyle(View.SCROLLBARS_OUTSIDE_OVERLAY);
         webView.setBackgroundResource(R.color.web_view_bg);
         WebSettings webSettings = webView.getSettings();
-        webSettings.setSupportMultipleWindows(true);
-//        webView.addJavascriptInterface(new InJavaScriptLocalObj(), "local_obj");
-        webSettings.setBuiltInZoomControls(false);
-        webSettings.setSupportZoom(false);
-        webSettings.setJavaScriptEnabled(true);
-        webSettings.setDomStorageEnabled(true);
+        webSettings.setBuiltInZoomControls(true);
+        webSettings.setDisplayZoomControls(false);
+        webSettings.setSupportZoom(true);
         webSettings.setDefaultTextEncodingName("utf-8");
-        webSettings.setLoadsImagesAutomatically(true);
         webSettings.setUseWideViewPort(false);
         webSettings.setLoadWithOverviewMode(false);
-        //图片根据屏幕自动缩放
-        webSettings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
-        webSettings.setLoadWithOverviewMode(true);
-        webSettings.setCacheMode(WebSettings.LOAD_DEFAULT); //缓存策略
-//        webView.setOnCreateContextMenuListener(menuListener); //长按
     }
 
 }
