@@ -61,7 +61,7 @@ public class TopicDetailFragment extends BaseFragment {
                 ActivitySwitcher.pushFragment(sActivity, ReplyListFragment.class, arguments);
             }
         });
-        reply.setText(reply_count + "");
+        reply.setText(String.valueOf(reply_count));
         setWebView();
         loadData();
         return view;
@@ -87,6 +87,7 @@ public class TopicDetailFragment extends BaseFragment {
         String t = "<h2 class=\"title\">" + title + "</h2>";
         String from = "<span class=\"from\">" + author + "&nbsp;&nbsp;" + create_at + "</span>";
         content = linkCss + t + from + content;
+        content = content.replace("//dn-cnode", "https://dn-cnode");
         webView.loadDataWithBaseURL(null, content, "text/html", "utf-8", null);
     }
 
