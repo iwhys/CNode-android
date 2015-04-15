@@ -33,4 +33,4 @@ https://github.com/SkillCollege/QrCodeScan<br>
 6）Google家的Volley和Gson<br>
 
 ## License
-        http://www.apache.org/licenses/LICENSE-2.0
+

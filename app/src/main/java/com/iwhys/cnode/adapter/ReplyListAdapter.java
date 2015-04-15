@@ -1,6 +1,7 @@
 package com.iwhys.cnode.adapter;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.text.Html;
 import android.view.LayoutInflater;
@@ -58,12 +59,20 @@ public class ReplyListAdapter extends BaseListAdapter<Reply> {
         author.setText(reply.getAuthor().getLoginname());
         createAt.setText(CommonUtils.commonTime(reply.getCreate_at()));
         String replyContent = reply.getContent();
-        replyContent = replyContent.replace("src=\"//","src=\"https://");
+        replyContent = replyContent.replace("//dn-cnode", "https://dn-cnode");
         content.setText(Html.fromHtml(replyContent));
         view.setBackgroundResource(getItemViewType(position) == EVEN ? R.drawable.item_topic_even_bg : R.drawable.item_topic_odd_bg);
         String avatarUrl = reply.getAuthor().getAvatar_url();
         avatar.setImageURI(Uri.parse(UrlHelper.resolve(UrlHelper.HOST, avatarUrl)), context);
         view.setTag(R.id.first_tag, reply);
         return view;
+    }
+
+    static class UrlImageGetter implements Html.ImageGetter {
+
+        @Override
+        public Drawable getDrawable(String source) {
+            return null;
+        }
     }
 }
