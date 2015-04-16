@@ -59,12 +59,6 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
         super.onCreate(savedInstanceState);
         doubleClickExitHelper = new DoubleClickExitHelper(this);
         setContentView(R.layout.activity_main);
-//        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-//            //透明状态栏
-//            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-//            //透明导航栏
-//            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
-//        }
         initActionBarAndDrawer();
         initLayout();
         //所有控件加载完开始加载数据

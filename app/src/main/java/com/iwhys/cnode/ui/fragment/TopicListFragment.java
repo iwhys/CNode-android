@@ -3,6 +3,7 @@ package com.iwhys.cnode.ui.fragment;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +22,7 @@ import com.iwhys.cnode.entity.Topics;
 import com.iwhys.cnode.ui.activity.SingleInstanceActivity;
 import com.iwhys.cnode.util.ActivitySwitcher;
 import com.iwhys.cnode.util.CommonUtils;
+import com.iwhys.cnode.util.DBHelper;
 import com.iwhys.cnode.util.constant.Params;
 import com.iwhys.cnode.util.volley.DateTypeAdapter;
 import com.iwhys.cnode.util.volley.UrlHelper;
@@ -49,6 +51,7 @@ public class TopicListFragment extends BaseFragment {
 
     /**
      * 刷新
+     *
      * @param rightNow 是否立即刷新
      */
     public void refresh(boolean rightNow) {
@@ -74,7 +77,14 @@ public class TopicListFragment extends BaseFragment {
             }
 
             @Override
-            public void getDataList(final int page) {
+            public void getDataFromLocal() {
+                String[] data = DBHelper.newInstance().get(tab);
+                if (data == null) return;
+                handleData(1, data[1], Long.valueOf(data[0]));
+            }
+
+            @Override
+            public void getDataFromServer(final int page) {
                 Map<String, Object> params = new HashMap<>();
                 params.put(Params.TAB, tab);
                 params.put(Params.LIMIT, PAGE_COUNT);
@@ -83,16 +93,12 @@ public class TopicListFragment extends BaseFragment {
                 StringRequest request = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        List<Topic> topicList = null;
-                        if (response != null){
-                            Gson gson = new GsonBuilder()
-                                    .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
-                                    .registerTypeAdapter(Date.class, new DateTypeAdapter())
-                                    .create();
-                            Topics topics = gson.fromJson(response, Topics.class);
-                            topicList = topics.getData();
+                        if (TextUtils.isEmpty(response)) {
+                            listView.onGetDataFailure(page);
+                            return;
                         }
-                        listView.onGetDataSuccess(page, topicList);
+                        DBHelper.newInstance().save(tab, response);
+                        handleData(page, response, System.currentTimeMillis() / 1000);
                     }
                 }, new Response.ErrorListener() {
                     @Override
@@ -123,5 +129,16 @@ public class TopicListFragment extends BaseFragment {
             }
         });
         return listView.getView();
+    }
+
+    //处理获取到的数据
+    private void handleData(int page, String response, long refreshTime) {
+        Gson gson = new GsonBuilder()
+                .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
+                .registerTypeAdapter(Date.class, new DateTypeAdapter())
+                .create();
+        Topics topics = gson.fromJson(response, Topics.class);
+        List<Topic> topicList = topics.getData();
+        listView.onGetDataSuccess(page, topicList, refreshTime);
     }
 }

@@ -60,7 +60,7 @@ public abstract class CommonListView<T> implements SwipeRefreshLayout.OnRefreshL
         this.refreshInterval = interval;
     }
 
-    public void scrollToBottom(){
+    public void scrollToBottom() {
         listView.setSelection(listView.getBottom());
     }
 
@@ -74,15 +74,15 @@ public abstract class CommonListView<T> implements SwipeRefreshLayout.OnRefreshL
             emptyView.setVisibility(View.GONE);
         }
         //如果正在加载更多或者正在刷新或者不满足自动刷新条件，取消操作
-        if (listView.isLoadingMore() || refreshing || (!rightNow && System.currentTimeMillis() - refreshTime < refreshInterval)) {
+        if (listView.isLoadingMore() || refreshing || (!rightNow && System.currentTimeMillis() / 1000 - refreshTime < refreshInterval)) {
             return;
         }
-        if (!refreshLayout.isRefreshing()){
+        if (!refreshLayout.isRefreshing()) {
             refreshLayout.setRefreshing(true);
         }
         refreshing = true;
         listView.setRefreshing(true);
-        getDataList(1);
+        getDataFromServer(1);
     }
 
     /**
@@ -91,13 +91,13 @@ public abstract class CommonListView<T> implements SwipeRefreshLayout.OnRefreshL
      * @param page     页码
      * @param dataList 返回的数据
      */
-    public void onGetDataSuccess(int page, List<T> dataList) {
+    public void onGetDataSuccess(int page, List<T> dataList, long refreshTime) {
         stopRefreshOrLoadMore(page, true);
         if (dataList == null || dataList.isEmpty()) {
             refreshOrLoadMoreFailure();
         } else {
             if (page == 1) {
-                refreshTime = System.currentTimeMillis();
+                this.refreshTime = refreshTime;
             }
             adapter.refresh(dataList, page != 1);
             currentPage = page;
@@ -123,7 +123,7 @@ public abstract class CommonListView<T> implements SwipeRefreshLayout.OnRefreshL
         listView.setTransitionEffect(jazzyEffect);
     }
 
-    public void setOnScrollListener(AbsListView.OnScrollListener onScrollListener){
+    public void setOnScrollListener(AbsListView.OnScrollListener onScrollListener) {
         listView.setOnScrollListener(onScrollListener);
     }
 
@@ -169,6 +169,12 @@ public abstract class CommonListView<T> implements SwipeRefreshLayout.OnRefreshL
             @Override
             public void onClick(View v) {
                 refresh(false);
+            }
+        });
+        listView.post(new Runnable() {
+            @Override
+            public void run() {
+                getDataFromLocal();
             }
         });
     }
@@ -232,7 +238,7 @@ public abstract class CommonListView<T> implements SwipeRefreshLayout.OnRefreshL
 
     @Override
     public void onLoadMore() {
-        getDataList(currentPage + 1);
+        getDataFromServer(currentPage + 1);
     }
 
     /**
@@ -243,9 +249,15 @@ public abstract class CommonListView<T> implements SwipeRefreshLayout.OnRefreshL
     public abstract BaseListAdapter<T> getAdapter(Context context);
 
     /**
-     * 请求返回的数据列表
+     * 从网络获取数据
      *
      * @param page 页码
      */
-    public abstract void getDataList(int page);
+    public abstract void getDataFromServer(int page);
+
+    /**
+     * 从本地获取数据
+     *
+     */
+    public abstract void getDataFromLocal();
 }

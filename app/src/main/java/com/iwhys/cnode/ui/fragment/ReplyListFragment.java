@@ -76,7 +76,7 @@ public class ReplyListFragment extends BaseFragment implements TextWatcher, View
         input.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                if (hasFocus){
+                if (hasFocus) {
                     listView.scrollToBottom();
                 }
             }
@@ -90,7 +90,11 @@ public class ReplyListFragment extends BaseFragment implements TextWatcher, View
             }
 
             @Override
-            public void getDataList(final int page) {
+            public void getDataFromLocal() {
+            }
+
+            @Override
+            public void getDataFromServer(final int page) {
                 String url = UrlHelper.getTopicUrl(id);
                 StringRequest request = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
                     @Override
@@ -104,7 +108,7 @@ public class ReplyListFragment extends BaseFragment implements TextWatcher, View
                             Content content = gson.fromJson(response, Content.class);
                             replyList = content.getData().getReplies();
                         }
-                        listView.onGetDataSuccess(page, replyList);
+                        listView.onGetDataSuccess(page, replyList, System.currentTimeMillis() / 1000);
                     }
                 }, new Response.ErrorListener() {
                     @Override
@@ -184,7 +188,7 @@ public class ReplyListFragment extends BaseFragment implements TextWatcher, View
     }
 
     //清空reply_to
-    private void clearReplyTo(){
+    private void clearReplyTo() {
         reply_to.setText("");
         reply_to.setTag("");
     }
@@ -195,7 +199,7 @@ public class ReplyListFragment extends BaseFragment implements TextWatcher, View
         String url = UrlHelper.getReplyUrl(id);
         Map<String, String> map = new HashMap<>();
         map.put(Params.ACCESS_TOKEN, App.getContext().access_token);
-        if (reply_to.getTag()!=null){
+        if (reply_to.getTag() != null) {
             map.put("reply_id", (String) reply_to.getTag());
         }
         map.put(Params.CONTENT, reply_to.getText().toString() + input.getText().toString().trim());

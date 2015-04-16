@@ -62,13 +62,6 @@ public class LoadMoreListView extends ListView {
             }
         });
         addFooterView(footer);
-        //确保已测量完View之后再设置状态
-        post(new Runnable() {
-            @Override
-            public void run() {
-                footer.setStatus(Footer.IDLE);
-            }
-        });
     }
 
     /**
@@ -200,6 +193,7 @@ public class LoadMoreListView extends ListView {
             text.setPadding(5, 8, 5, 8);
             addView(text);
             loadingAnim = AnimationUtils.loadAnimation(context, R.anim.rotate_loading);
+            setStatus(Footer.IDLE);
         }
 
         /**
