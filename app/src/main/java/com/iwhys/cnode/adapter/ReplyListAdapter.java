@@ -19,7 +19,7 @@ import com.iwhys.mylistview.ViewHolder;
 
 /**
  * Created by devil on 14/11/12.
- * 主题列表适配器
+ * 回复列表适配器
  */
 public class ReplyListAdapter extends BaseListAdapter<Reply> {
 

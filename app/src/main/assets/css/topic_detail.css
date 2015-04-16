@@ -2,3 +2,4 @@
 .from { display:block; font-size:14px; line-height:2.5; color:#bbb; text-align:center; background: url(../image/common_divider.png) repeat-x bottom;}
 div{line-height: 1.6; word-break:break-all; white-space:pre-wrap;}
 img{ max-width:99%; height:auto;}
+pre, .prettyprint{   font-size: 14px; border-radius: 5; padding: 15px; border: 1px solid #ccc; background: #f7f7f7;word-break:break-all; white-space:pre-wrap;}
