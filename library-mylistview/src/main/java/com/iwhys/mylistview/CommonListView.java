@@ -21,7 +21,7 @@ public abstract class CommonListView<T> implements SwipeRefreshLayout.OnRefreshL
     //上下文
     private Context context;
     //自动刷新间隔，默认5分钟
-    private long refreshInterval = 5 * 60 * 1000;
+    private long refreshInterval = 5 * 60;
     //数据适配器
     private BaseListAdapter<T> adapter;
     //记录上次刷新成功的时间
@@ -70,11 +70,14 @@ public abstract class CommonListView<T> implements SwipeRefreshLayout.OnRefreshL
      * @param rightNow 是否立即刷新 false时判断刷新间隔是否满足自动刷新条件
      */
     public void refresh(boolean rightNow) {
+        System.out.println("开始刷新了啊啊啊 ");
         if (emptyView.getVisibility() == View.VISIBLE) {
             emptyView.setVisibility(View.GONE);
         }
+        long delta = System.currentTimeMillis() / 1000 - refreshTime;
+        System.out.println("现在距离上次刷新的间隔是："+delta);
         //如果正在加载更多或者正在刷新或者不满足自动刷新条件，取消操作
-        if (listView.isLoadingMore() || refreshing || (!rightNow && System.currentTimeMillis() / 1000 - refreshTime < refreshInterval)) {
+        if (listView.isLoadingMore() || refreshing || (!rightNow && (System.currentTimeMillis() / 1000 - refreshTime) < refreshInterval)) {
             return;
         }
         if (!refreshLayout.isRefreshing()) {
@@ -174,6 +177,7 @@ public abstract class CommonListView<T> implements SwipeRefreshLayout.OnRefreshL
         listView.post(new Runnable() {
             @Override
             public void run() {
+                System.out.println("从本地取数据啊啊啊");
                 getDataFromLocal();
             }
         });
@@ -257,7 +261,6 @@ public abstract class CommonListView<T> implements SwipeRefreshLayout.OnRefreshL
 
     /**
      * 从本地获取数据
-     *
      */
     public abstract void getDataFromLocal();
 }

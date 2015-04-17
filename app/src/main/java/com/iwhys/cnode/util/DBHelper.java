@@ -33,14 +33,15 @@ public class DBHelper {
      */
     public String[] get(String tab) {
         Cursor c= db.rawQuery("select update_time, content from data_cache where tab=?", new String[]{tab});
-        try {
-            c.moveToFirst();
-            String update_time = String.valueOf(c.getInt(c.getColumnIndex("update_time")));
-            String content = c.getString(c.getColumnIndex("content"));
-            c.close();
-            return new String[]{update_time, content};
-        } catch (Exception e) {
-            e.printStackTrace();
+        if (c.moveToFirst()){
+            try {
+                String update_time = String.valueOf(c.getInt(c.getColumnIndex("update_time")));
+                String content = c.getString(c.getColumnIndex("content"));
+                c.close();
+                return new String[]{update_time, content};
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
         return null;
     }
