@@ -13,6 +13,7 @@
         android:layout_marginBottom="5dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
+        android:minHeight="80dp"
         android:layout_height="wrap_content">
 
         <com.facebook.drawee.view.SimpleDraweeView
@@ -31,8 +32,7 @@
             fresco:progressBarImageScaleType="centerInside"
             fresco:progressBarAutoRotateInterval="1000"
             fresco:roundAsCircle="true"
-            fresco:roundingBorderWidth="2dp"
-            />
+            fresco:roundingBorderWidth="2dp" />
 
         <TextView
             android:id="@+id/author"
@@ -52,26 +52,21 @@
             android:layout_width="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
-            android:gravity="center"
+            android:gravity="center_vertical|end"
             android:textSize="14sp"
             android:textColor="#888"
             android:padding="5dp"
-            android:layout_alignTop="@+id/author"
-            android:layout_alignBottom="@+id/author"
+            android:layout_alignTop="@+id/avatar"
+            android:layout_alignBottom="@+id/avatar"
             android:layout_height="wrap_content" />
-
-        <TextView
-            android:id="@+id/content"
-            android:layout_width="wrap_content"
+        <com.iwhys.cnode.widget.ScrollListenerWebView
+            android:id="@+id/web_view"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_below="@+id/avatar"
-            android:lineSpacingMultiplier="1.2"
-            android:autoLink="web|phone"
-            android:textSize="18sp"
-            android:textColor="#444"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
     </RelativeLayout>

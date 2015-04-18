@@ -124,12 +124,14 @@ public class ReplyListFragment extends BaseFragment implements TextWatcher, View
         listView.setOnItemClickListener(new CompatOnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
+                input.requestFocus();
                 CommonUtils.showKeyboard(input);
                 Reply reply = (Reply) view.getTag(R.id.first_tag);
                 reply_to.setTag(reply.getId());
                 reply_to.setText("@" + reply.getAuthor().getLoginname());
             }
         });
+        listView.setJazzyEffect(null);
         ((ViewGroup) view.findViewById(R.id.list_container)).addView(listView.getView());
         view.post(new Runnable() {
             @Override

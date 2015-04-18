@@ -186,6 +186,7 @@ public class LoadMoreListView extends ListView {
             setGravity(Gravity.CENTER);
             icon = new ImageView(context);
             icon.setImageResource(R.drawable.icon_loading_small);
+            icon.setVisibility(INVISIBLE);
             addView(icon);
             text = new TextView(context);
             text.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
@@ -193,7 +194,12 @@ public class LoadMoreListView extends ListView {
             text.setPadding(5, 8, 5, 8);
             addView(text);
             loadingAnim = AnimationUtils.loadAnimation(context, R.anim.rotate_loading);
-            setStatus(Footer.IDLE);
+            post(new Runnable() {
+                @Override
+                public void run() {
+                    setStatus(Footer.IDLE);
+                }
+            });
         }
 
         /**

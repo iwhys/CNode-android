@@ -1,6 +1,5 @@
 package com.iwhys.cnode.ui.fragment;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
@@ -10,7 +9,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebSettings;
 import android.widget.TextView;
 
 import com.iwhys.cnode.R;
@@ -62,7 +60,6 @@ public class TopicDetailFragment extends BaseFragment {
             }
         });
         reply.setText(String.valueOf(reply_count));
-        setWebView();
         loadData();
         return view;
     }
@@ -89,19 +86,6 @@ public class TopicDetailFragment extends BaseFragment {
         content = linkCss + t + from + content;
         content = content.replace("//dn-cnode", "https://dn-cnode");
         webView.loadDataWithBaseURL(null, content, "text/html", "utf-8", null);
-    }
-
-    // webView设置
-    @SuppressLint("SetJavaScriptEnabled")
-    private void setWebView() {
-        webView.setBackgroundResource(R.color.web_view_bg);
-        WebSettings webSettings = webView.getSettings();
-        webSettings.setBuiltInZoomControls(true);
-        webSettings.setDisplayZoomControls(false);
-        webSettings.setSupportZoom(true);
-        webSettings.setDefaultTextEncodingName("utf-8");
-        webSettings.setUseWideViewPort(false);
-        webSettings.setLoadWithOverviewMode(false);
     }
 
 }
