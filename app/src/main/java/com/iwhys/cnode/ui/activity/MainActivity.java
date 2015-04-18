@@ -76,7 +76,7 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
-        if (hasFocus){
+        if (hasFocus) {
             refreshItem();
         }
     }
@@ -90,7 +90,7 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN) {
-            if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            if (drawerLayout != null && drawerLayout.isDrawerOpen(GravityCompat.START)) {
                 toggleDrawer();
                 return true;
             }
@@ -108,7 +108,7 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.add) {
-            if (OauthHelper.needLogin()){
+            if (OauthHelper.needLogin()) {
                 OauthHelper.showLogin(this);
             } else {
                 ActivitySwitcher.pushFragment(this, NewTopicFragment.class);
@@ -119,7 +119,7 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
-        menu.findItem(R.id.add).setVisible(!drawerLayout.isDrawerOpen(Gravity.START));
+        menu.findItem(R.id.add).setVisible(!(drawerLayout != null && drawerLayout.isDrawerOpen(Gravity.START)));
         return super.onPrepareOptionsMenu(menu);
     }
 
@@ -138,7 +138,7 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
 
             @Override
             public void onDrawerOpened(View view) {
-                if (!TextUtils.isEmpty(App.getContext().access_token)){
+                if (!TextUtils.isEmpty(App.getContext().access_token)) {
                     leftMenu.setUserInfo();
                 }
                 invalidateOptionsMenu();
@@ -223,9 +223,9 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
         @Override
         public void onReceive(Context context, Intent intent) {
             final String action = intent.getAction();
-            if (action.equals(IntentAction.LOGIN)){
+            if (action.equals(IntentAction.LOGIN)) {
                 leftMenu.setUserInfo();
-            } else if (action.equals(IntentAction.NEW_TOPIC)){
+            } else if (action.equals(IntentAction.NEW_TOPIC)) {
                 pagerAdapter.getItem(0).refresh(true);
             }
         }

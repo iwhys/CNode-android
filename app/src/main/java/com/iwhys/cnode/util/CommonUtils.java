@@ -57,8 +57,7 @@ public class CommonUtils {
     public static PackageInfo getVersionInfo() {
         try {
             PackageManager pm = APP_CONTEXT.getPackageManager();
-            PackageInfo pInfo = pm.getPackageInfo(APP_CONTEXT.getPackageName(), PackageManager.GET_CONFIGURATIONS);
-            return pInfo;
+            return pm.getPackageInfo(APP_CONTEXT.getPackageName(), PackageManager.GET_CONFIGURATIONS);
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }
