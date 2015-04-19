@@ -1,20 +1,23 @@
 package com.iwhys.mylistview;
 
+import android.content.Context;
 import android.util.SparseArray;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 
 /**
  * Created by devil on 15/2/12.
  * 适用于Adapter的通用ViewHolder
  */
-public class ViewHolder {
+public class CommonViewHolder {
 
     private SparseArray<View> views;
     private View convertView;
 
-    private ViewHolder(View convertView) {
+    private CommonViewHolder(Context context, ViewGroup parent, int layoutId) {
+        convertView = LayoutInflater.from(context).inflate(layoutId, parent, false);
         this.views = new SparseArray<>();
-        this.convertView = convertView;
         convertView.setTag(this);
     }
 
@@ -23,15 +26,12 @@ public class ViewHolder {
      * @param convertView convertView
      * @return ViewHolder
      */
-    public static ViewHolder get(View convertView) {
-        if (convertView == null) {
-            throw new NullPointerException("必须先初始化convertView.");
+    public static CommonViewHolder get(Context context, View convertView, ViewGroup parent, int layoutId) {
+        if (convertView == null){
+            return new CommonViewHolder(context, parent, layoutId);
+        } else {
+            return (CommonViewHolder) convertView.getTag();
         }
-        Object viewHolder = convertView.getTag();
-        if (viewHolder == null) {
-            viewHolder = new ViewHolder(convertView);
-        }
-        return (ViewHolder) viewHolder;
     }
 
     /**
