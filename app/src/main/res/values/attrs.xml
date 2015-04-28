@@ -67,9 +67,9 @@
 
     <!--个人中心主题分类标签-->
     <string-array name="user_column_tab">
-        <item>topics</item>
-        <item>replies</item>
-        <item>collection</item>
+        <item>recent_topics</item>
+        <item>recent_replies</item>
+        <item>collect_topics</item>
     </string-array>
 
 </resources>

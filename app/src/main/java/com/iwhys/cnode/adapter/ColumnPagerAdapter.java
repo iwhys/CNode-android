@@ -11,12 +11,12 @@ import com.iwhys.cnode.ui.fragment.TopicListFragment;
 import java.util.List;
 
 
-public class ViewPagerAdapter extends FragmentPagerAdapter {
+public class ColumnPagerAdapter extends FragmentPagerAdapter {
 
     private List<TopicListFragment> mFragments;
     private String[] columnTitles;
 
-    public ViewPagerAdapter(FragmentManager manager, List<TopicListFragment> fragments, String[] columnTitles) {
+    public ColumnPagerAdapter(FragmentManager manager, List<TopicListFragment> fragments, String[] columnTitles) {
         super(manager);
         mFragments = fragments;
         this.columnTitles = columnTitles;

@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewPropertyAnimator;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
+import android.widget.TextView;
 
 import com.iwhys.mylistview.jazzy.JazzyEffect;
 
@@ -32,6 +33,8 @@ public abstract class CommonListView<T> implements SwipeRefreshLayout.OnRefreshL
     private LoadMoreListView listView;
     //空值View
     private View container, emptyView;
+    //空值提示
+    private TextView emptyHint;
     //是否正在刷新
     private boolean refreshing = false;
     //当前请求的页码
@@ -94,7 +97,7 @@ public abstract class CommonListView<T> implements SwipeRefreshLayout.OnRefreshL
     public void onGetDataSuccess(int page, List<T> dataList, long refreshTime) {
         stopRefreshOrLoadMore(page, true);
         if (dataList == null || dataList.isEmpty()) {
-            refreshOrLoadMoreFailure();
+            noData();
         } else {
             if (page == 1) {
                 this.refreshTime = refreshTime;
@@ -165,6 +168,7 @@ public abstract class CommonListView<T> implements SwipeRefreshLayout.OnRefreshL
         listView.setAdapter(adapter);
         listView.setOnLoadMoreListener(this);
         emptyView = container.findViewById(R.id.empty_view);
+        emptyHint = (TextView) container.findViewById(R.id.empty_hint);
         emptyView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -213,6 +217,15 @@ public abstract class CommonListView<T> implements SwipeRefreshLayout.OnRefreshL
     //刷新或加载更多失败
     private void refreshOrLoadMoreFailure() {
         if (adapter.isEmpty()) {
+            emptyHint.setText(R.string.load_failure);
+            emptyView.setVisibility(View.VISIBLE);
+        }
+    }
+
+    //没有数据
+    private void noData(){
+        if (adapter.isEmpty()) {
+            emptyHint.setText(R.string.no_data);
             emptyView.setVisibility(View.VISIBLE);
         }
     }

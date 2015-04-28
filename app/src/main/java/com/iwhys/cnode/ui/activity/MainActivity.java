@@ -24,7 +24,7 @@ import android.widget.TextView;
 import com.astuetz.PagerSlidingTabStrip;
 import com.iwhys.cnode.App;
 import com.iwhys.cnode.R;
-import com.iwhys.cnode.adapter.ViewPagerAdapter;
+import com.iwhys.cnode.adapter.ColumnPagerAdapter;
 import com.iwhys.cnode.ui.fragment.LeftMenuFragment;
 import com.iwhys.cnode.ui.fragment.NewTopicFragment;
 import com.iwhys.cnode.ui.fragment.TopicListFragment;
@@ -50,7 +50,7 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
     //栏目标签
     private PagerSlidingTabStrip tabs;
     //页面适配器
-    private ViewPagerAdapter pagerAdapter;
+    private ColumnPagerAdapter pagerAdapter;
     //左侧菜单
     private LeftMenuFragment leftMenu;
 
@@ -164,7 +164,7 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
             fragments.add(i, fragment);
         }
         viewPager = (ViewPager) findViewById(R.id.view_pager);
-        pagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(), fragments, getResources().getStringArray(R.array.column_title));
+        pagerAdapter = new ColumnPagerAdapter(getSupportFragmentManager(), fragments, getResources().getStringArray(R.array.column_title));
         viewPager.setAdapter(pagerAdapter);
         viewPager.setOffscreenPageLimit(pagerAdapter.getCount() - 1);
         tabs = (PagerSlidingTabStrip) findViewById(R.id.tabs);

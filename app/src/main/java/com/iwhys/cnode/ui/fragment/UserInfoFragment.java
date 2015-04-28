@@ -22,19 +22,26 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.astuetz.PagerSlidingTabStrip;
 import com.facebook.drawee.view.SimpleDraweeView;
+import com.google.gson.FieldNamingPolicy;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.iwhys.cnode.R;
-import com.iwhys.cnode.adapter.ViewPagerAdapter;
+import com.iwhys.cnode.adapter.UserColumnPagerAdapter;
+import com.iwhys.cnode.entity.User;
+import com.iwhys.cnode.entity.UserData;
 import com.iwhys.cnode.ui.activity.BaseBackActivity;
 import com.iwhys.cnode.util.CommonUtils;
 import com.iwhys.cnode.util.OauthHelper;
 import com.iwhys.cnode.util.SimpleFactory;
 import com.iwhys.cnode.util.constant.IntentAction;
 import com.iwhys.cnode.util.constant.Params;
+import com.iwhys.cnode.util.volley.DateTypeAdapter;
 import com.iwhys.cnode.util.volley.UrlHelper;
 import com.iwhys.cnode.util.volley.VolleyErrorHelper;
 import com.iwhys.cnode.util.volley.VolleyHelper;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * 用户信息页
@@ -48,7 +55,9 @@ public class UserInfoFragment extends BaseFragment implements ViewPager.OnPageCh
     //栏目标签
     private PagerSlidingTabStrip tabs;
     //页面适配器
-    private ViewPagerAdapter pagerAdapter;
+    private UserColumnPagerAdapter pagerAdapter;
+
+    private User user;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -81,15 +90,15 @@ public class UserInfoFragment extends BaseFragment implements ViewPager.OnPageCh
         ((SimpleDraweeView) view.findViewById(R.id.avatar)).setImageURI(Uri.parse(UrlHelper.resolve(UrlHelper.HOST, avatar_url)), sActivity);
         ((TextView) view.findViewById(R.id.loginname)).setText(username);
         String[] columnTabs = getResources().getStringArray(R.array.user_column_tab);
-        ArrayList<TopicListFragment> fragments = new ArrayList<>();
+        ArrayList<UserTopicListFragment> fragments = new ArrayList<>();
         for (int i = 0; i < columnTabs.length; i++) {
             Bundle bundle = new Bundle();
             bundle.putString(Params.TAB, columnTabs[i]);
-            TopicListFragment fragment = (TopicListFragment) SimpleFactory.createFragment(TopicListFragment.class.getSimpleName(), bundle);
+            UserTopicListFragment fragment = (UserTopicListFragment) SimpleFactory.createFragment(UserTopicListFragment.class.getSimpleName(), bundle);
             fragments.add(i, fragment);
         }
         viewPager = (ViewPager) view.findViewById(R.id.view_pager);
-        pagerAdapter = new ViewPagerAdapter(getChildFragmentManager(), fragments, getResources().getStringArray(R.array.user_column_title));
+        pagerAdapter = new UserColumnPagerAdapter(getChildFragmentManager(), fragments, getResources().getStringArray(R.array.user_column_title));
         viewPager.setAdapter(pagerAdapter);
         viewPager.setOffscreenPageLimit(pagerAdapter.getCount() - 1);
         tabs = (PagerSlidingTabStrip) view.findViewById(R.id.tabs);
@@ -123,6 +132,7 @@ public class UserInfoFragment extends BaseFragment implements ViewPager.OnPageCh
     public void onPageSelected(int position) {
         ((BaseBackActivity) sActivity).enableGesture(position == 0);
         updateTabStatus();
+        refresh();
     }
 
     @Override
@@ -137,7 +147,13 @@ public class UserInfoFragment extends BaseFragment implements ViewPager.OnPageCh
             @Override
             public void onResponse(String response) {
                 hideProgress();
-
+                Gson gson = new GsonBuilder()
+                        .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
+                        .registerTypeAdapter(Date.class, new DateTypeAdapter())
+                        .create();
+                UserData data = gson.fromJson(response, UserData.class);
+                user = data.getData();
+                refresh();
             }
         }, new Response.ErrorListener() {
             @Override
@@ -182,5 +198,13 @@ public class UserInfoFragment extends BaseFragment implements ViewPager.OnPageCh
         OauthHelper.logout();
         sActivity.sendBroadcast(new Intent(IntentAction.LOGIN));
         sActivity.finish();
+    }
+
+    private void refresh(){
+        if (user == null){
+            getUserInfo();
+        } else {
+            pagerAdapter.getItem(viewPager.getCurrentItem()).refresh(user);
+        }
     }
 }
