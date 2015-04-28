@@ -1,13 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fresco="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:background="#fff"
     android:layout_height="match_parent">
     <include layout="@layout/common_toolbar"/>
-    <Button
-        android:id="@+id/logout"
-        android:text="@string/logout"
-        android:layout_margin="30dp"
+    <RelativeLayout
+        android:id="@+id/user_info"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:background="@drawable/item_left_menu_bg"
+        android:layout_height="80dp">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/avatar"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
+            fresco:fadeDuration="300"
+            fresco:actualImageScaleType="focusCrop"
+            fresco:placeholderImage="@drawable/icon_person_default"
+            fresco:placeholderImageScaleType="fitCenter"
+            fresco:failureImageScaleType="centerInside"
+            fresco:retryImageScaleType="centerCrop"
+            fresco:progressBarImageScaleType="centerInside"
+            fresco:progressBarAutoRotateInterval="1000"
+            fresco:roundAsCircle="true"
+            fresco:roundingBorderWidth="2dp" />
+
+        <TextView
+            android:id="@+id/loginname"
+            android:textColor="@color/main_color"
+            android:textSize="16sp"
+            android:layout_toRightOf="@+id/avatar"
+            android:layout_toEndOf="@+id/avatar"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <com.astuetz.PagerSlidingTabStrip
+            android:id="@+id/tabs"
+            android:layout_width="match_parent"
+            android:background="@android:color/transparent"
+            app:pstsIndicatorHeight="4dp"
+            app:pstsIndicatorColor="@color/main_color"
+            app:pstsDividerColor="@android:color/transparent"
+            app:pstsUnderlineHeight="0.5dp"
+            app:pstsUnderlineColor="#222"
+            app:pstsShouldExpand="true"
+            android:layout_height="40dp" />
+        <android.support.v4.view.ViewPager
+            android:id="@+id/view_pager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="40dp"
+            android:background="@android:color/white"
+            />
+    </FrameLayout>
 </LinearLayout>

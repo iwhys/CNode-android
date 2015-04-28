@@ -26,9 +26,17 @@ public class BaseBackActivity extends BaseActivity implements SwipeBackActivityB
         mHelper = new SwipeBackActivityHelper(this);
         mHelper.onActivityCreate();
         swipeBackLayout = getSwipeBackLayout();
-        swipeBackLayout.setEnableGesture(true);
+        enableGesture(true);
         swipeBackLayout.setEdgeTrackingEnabled(SwipeBackLayout.EDGE_LEFT);
         swipeBackLayout.addSwipeListener(this);
+    }
+
+    /**
+     * 设置是否开启滑动返回手势
+     * @param enableGesture 是否启动
+     */
+    public void enableGesture(boolean enableGesture){
+        swipeBackLayout.setEnableGesture(enableGesture);
     }
 
     @Override

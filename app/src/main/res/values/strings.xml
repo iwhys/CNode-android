@@ -10,7 +10,6 @@
     <string name="share_content">https://cnodejs.org/</string>
     <string name="user_info">个人中心</string>
     <string name="login">点击登录</string>
-    <string name="logout">退出登录</string>
     <string name="on_login">正在登录&#8230;</string>
     <string name="success">操作成功</string>
     <string name="failure">操作失败，请重试</string>
@@ -27,8 +26,12 @@
     <string name="share">分享</string>
     <string name="ask">问答</string>
     <string name="job">招聘</string>
+    <string name="topics">我的主题</string>
+    <string name="replies">我的回复</string>
+    <string name="collection">我的收藏</string>
 
     <string name="add">添加</string>
+    <string name="exit">退出</string>
     <string name="data_empty">没有数据</string>
 
     <string name="generic_server_down">网络超时</string>

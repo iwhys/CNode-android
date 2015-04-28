@@ -68,6 +68,8 @@ public class LeftMenuFragment extends BaseFragment implements View.OnClickListen
                     case 2:
                         ActivitySwitcher.pushFragment(sActivity, AboutFragment.class);
                         break;
+                    default:
+                        break;
                 }
             }
         });
@@ -80,7 +82,10 @@ public class LeftMenuFragment extends BaseFragment implements View.OnClickListen
     public void onClick(View v) {
         if (v.getId() == R.id.user_info) {
             if (!OauthHelper.needLogin()){
-                ActivitySwitcher.pushFragment(sActivity, UserInfoFragment.class);
+                Bundle bundle = new Bundle();
+                bundle.putString(Params.LOGIN_NAME, loginname.getText().toString());
+                bundle.putString(Params.AVATAR_URL, CommonUtils.getStringFromLocal(Params.AVATAR_URL));
+                ActivitySwitcher.pushFragment(sActivity, UserInfoFragment.class, bundle);
             } else {
                 OauthHelper.showLogin(sActivity);
             }

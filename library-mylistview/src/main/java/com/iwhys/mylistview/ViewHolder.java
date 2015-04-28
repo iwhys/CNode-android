@@ -2,6 +2,7 @@ package com.iwhys.mylistview;
 
 import android.util.SparseArray;
 import android.view.View;
+import android.widget.TextView;
 
 /**
  * Created by devil on 15/2/12.
@@ -47,6 +48,18 @@ public class ViewHolder {
             views.put(viewId, view);
         }
         return (T) view;
+    }
+
+    /**
+     * 设置文本内容
+     * @param viewId 文本控件id
+     * @param text 文本内容
+     * @return viewHolder
+     */
+    public ViewHolder setText(int viewId, CharSequence text){
+        TextView tv = getView(viewId);
+        tv.setText(text);
+        return this;
     }
 
 }

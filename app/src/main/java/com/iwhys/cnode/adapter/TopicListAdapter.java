@@ -28,7 +28,7 @@ public class TopicListAdapter extends BaseListAdapter<Topic> {
     private Context context;
 
     public TopicListAdapter(Context context) {
-        super();
+//        super();
         this.context = context;
     }
 

@@ -49,6 +49,13 @@
         <item>@string/job</item>
     </string-array>
 
+    <!--个人中心主题分类标题-->
+    <string-array name="user_column_title">
+        <item>@string/topics</item>
+        <item>@string/replies</item>
+        <item>@string/collection</item>
+    </string-array>
+
     <!--栏目标签-->
     <string-array name="column_tab">
         <item>all</item>
@@ -56,6 +63,13 @@
         <item>share</item>
         <item>ask</item>
         <item>job</item>
+    </string-array>
+
+    <!--个人中心主题分类标签-->
+    <string-array name="user_column_tab">
+        <item>topics</item>
+        <item>replies</item>
+        <item>collection</item>
     </string-array>
 
 </resources>
